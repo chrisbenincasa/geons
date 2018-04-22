@@ -84,4 +84,6 @@ object GenericDynamoModelComposer {
       gen.from(mapper(zipped(makerN.value.from(m) :: defaults() :: HNil)))
     }
   }
+
+  def apply[A <: DynamoModel[_, _]](implicit d: DynamoModelComposer[A]) = d
 }

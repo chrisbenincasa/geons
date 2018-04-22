@@ -37,6 +37,8 @@ object GenericDynamoModelDecomposer {
     }
   }
 
+  def apply[A <: DynamoModel[_, _]](implicit d: GenericDynamoModelDecomposer[A]) = d
+
   private def mkGenDynamoModelDecomposer[A](fn: A => Map[String, AttributeValue]): GenericDynamoModelDecomposer[A] =
     new GenericDynamoModelDecomposer[A] {
       override def to(a: A): Map[String, AttributeValue] = fn(a)
