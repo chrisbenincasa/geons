@@ -5,7 +5,8 @@ object BuildConfig {
   object Dependencies {
     val testDeps = Seq(
       "org.scalatest" %% "scalatest" % versions.scalatest,
-      "org.mockito" % "mockito-all" % versions.mockito
+      "org.mockito" % "mockito-all" % versions.mockito,
+      "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % versions.scalacheckShapeless
     ).map(_ % "test")
 
     def awsServiceDep(service: String, version: String = versions.aws): ModuleID = {
@@ -20,6 +21,7 @@ object BuildConfig {
   object versions {
     val mockito = "1.10.19"
     val scalatest = "3.0.1"
+    val scalacheckShapeless = "1.1.6"
 
     lazy val shapeless = "2.3.3"
 

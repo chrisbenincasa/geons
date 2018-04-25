@@ -3,6 +3,14 @@ import BuildConfig.Dependencies
 
 lazy val commonSettings = BuildConfig.commonSettings()
 
+lazy val general = project.in(file("general")).
+  settings(commonSettings).
+  settings(
+    Seq(
+      name := "general-geons"
+    )
+  )
+
 lazy val aws = project.in(file("aws")).
   settings(commonSettings).
   settings(
@@ -22,7 +30,7 @@ lazy val geons = project.in(file(".")).
       aggregate in update := false
     )
   ).
-  aggregate(aws)
+  aggregate(aws, general)
 
 
 lazy val showVersion = taskKey[Unit]("Show version")
